@@ -5,6 +5,134 @@ public class codes {
 
 
     /*
+
+     select count(*) from employees where job_id = 'IT_PROG';
+
+    select count(8) from employees where salary >8000;
+
+    select count (distinct first_name) from employees;
+
+    select * from employees order by salary desc;
+
+    select * from employees order by first_name;
+
+    select* from employees order by hire_date;
+
+    select*from employees where first_name like 'C%';
+
+    select*from employees where first_name like 'C_____';
+
+    select * from employees where first_name like '_u%';
+
+    select*from employees where employees.first_name ILIKE '%c%';
+
+    select sum (salary) from employees;
+
+    select round (avg(salary),2) from employees;
+
+    select max(salary) from employees;
+
+    select * from employees where salary=24000;
+
+    select * from employees where salary=(select max(salary)from employees);
+
+    select  MAX(salary)from employees where salary<(select max(salary) from employees);
+
+    select * from employees where salary=(select MAX(salary)from employees where salary
+                                                                                 <(select MAX(salary) from employees));
+
+    select * from employees order by salary desc offset 1 limit 2;
+
+    select  * from employees order by salary desc offset 6 limit 3;
+
+-- 14th highest salary(removing duplicates)
+    select distinct salary
+    from employees order by salary desc offset 13 limit 1;
+
+--  who is making highest salary? change offset value n-1;
+    select * from employees where salary=(select distinct salary
+    from employees order by salary desc offset 13 limit 1);
+-- what is the average salary from IT Programmers
+
+    select avg(salary) from employees where job_id = 'IT_PROG';
+
+-- what is the average salary for SA_REP
+
+    select avg(salary) from employees where job_id = 'SA_REP';
+
+    select  distinct job_id from employees;
+
+-- people working for IT Prog
+
+    select count(*) from employees where job_id = 'IT_PROG';
+
+
+-- solution
+
+    select job_id ,avg(salary),count(*),sum(salary) from employees group by job_id;
+
+-- get me job_ids where their salary is more then 5k
+
+    select * from employees where salary>5000;
+
+    select job_id,avg(salary) from employees where salary>5000 group by job_id;
+
+-- the correct solution is
+
+    select job_id,avg(salary) from employees group by job_id having avg(salary)>5000;
+
+-- how to find duplicate names? how many times they repeat
+
+    select first_name,count(*) from employees group by first_name having count(*)>1;
+ -- how can we rename the colum we displayed
+
+    select first_name as "give_name", last_name as "surname" from employees;
+
+    select first_name||' '||last_name as "full_name" from employees;
+
+-- add @cydeo.com and name new colum to full_email
+
+    select lower(email||'@cydeo.com') as "full_email" from employees;-- lowercase
+
+    select upper(email||'@cydeo.com') as "full_email" from employees; -- uppercase
+
+    select first_name,length(first_name)as "length_name" from employees;
+
+--substr(colName,begIndex,NumberPfChar)
+    select substr(first_name,1,1)||'.'||substr(last_name,1,1)as"initials" from employees; --substr initials
+
+
+-- initials , fullname,email(cydeo)(lower)
+
+    create view emailList as select substr(first_name,1,1)||'.'||substr(last_name,1,1)as"initials",
+    first_name||' '|| employees.last_name as "full_name",
+    lower(email||'@cydeo.com') as "e-mail" from employees;
+
+    select * from emailList;  -- we store it as variable on views;
+
+    select initials from emailList; -- nice cool futures
+
+    select first_name,last_name from employees;
+
+--find the longest name in DB
+
+    select distinct first_name, length(first_name)from employees where length(first_name)
+            = (select max(length(first_name)) from employees)
+    order by first_name limit 2 ;
+
+    select max(salary)from employees;
+    select *from employees where salary =(select max(salary)from employees);
+
+
+
+
+
+
+
+
+
+     */
+    /*
     SELECT * FROM countries;
 
 Create TABLE ScrumTeam(
