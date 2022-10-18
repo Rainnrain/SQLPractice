@@ -75,9 +75,6 @@ public class codes {
 
     select * from employees where salary>5000;
 
-    select job_id,avg(salary) from employees where salary>5000 group by job_id;
-
--- the correct solution is
 
     select job_id,avg(salary) from employees group by job_id having avg(salary)>5000;
 
