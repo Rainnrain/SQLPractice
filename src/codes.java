@@ -6,6 +6,8 @@ public class codes {
 
     /*
 
+
+
      select count(*) from employees where job_id = 'IT_PROG';
 
     select count(8) from employees where salary >8000;
