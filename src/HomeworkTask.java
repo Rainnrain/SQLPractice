@@ -51,9 +51,10 @@ public class HomeworkTask {
 
 --- Question 8 ---8. display the first name, last name, department number, and department name,  for all employees for departments 80 or 40.
 
-    SELECT first_name, last_name, d.department_id, d.department_name
-    from employees  join departments d
-    on employees.department_id= d.department_id;
+SELECT first_name, last_name, e.department_id, department_name
+from employees e join departments d
+on e.department_id= d.department_id
+WHERE e.department_id IN (40,80);
 
 --- Question 9 ---9. Display employees' first name, Lastname department id and all departments including those where do not have any employee.
 
